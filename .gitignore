@@ -1,0 +1,28 @@
+## Ignore Visual Studio cache/options directory
+.vs/
+
+## Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Tt]emp/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## IDE settings (optional)
+*.vscode/
+
+## NuGet packages
+*.nupkg
+*.snupkg
+packages/
+
+## Other
+*.dbmdl
+*.bak
+*.cache
+*.log
