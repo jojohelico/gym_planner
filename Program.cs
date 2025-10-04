@@ -6,7 +6,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
 // Add services to the container.
 builder.Services.AddRazorPages();
 
@@ -22,6 +21,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.MapControllers();
+
 app.UseRouting();
 
 app.UseAuthorization();
@@ -29,5 +30,9 @@ app.UseAuthorization();
 app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
+
+// after var app = builder.Build();
+app.MapGet("/api/health", () => Results.Ok("alive"));
+
 
 app.Run();
