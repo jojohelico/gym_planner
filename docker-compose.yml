@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: muscu_db
+    environment:
+      SA_PASSWORD: "Passw0rd/"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - muscu-net
+
+  muscuapp:
+    build: .
+    depends_on:
+      - sqlserver
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=sqlserver,1433;Database=MuscuAppDb;User Id=sa;Password=Passw0rd/;"
+    ports:
+      - "5000:80"
+    networks:
+      - muscu-net
+
+networks:
+  muscu-net:
+    driver: bridge

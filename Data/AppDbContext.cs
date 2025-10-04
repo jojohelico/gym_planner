@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MuscuApp.Models.Entities;
 
 namespace MuscuApp.Data
 {
@@ -8,8 +9,7 @@ namespace MuscuApp.Data
         {
         }
 
-        protected AppDbContext()
-        {
-        }
+        public DbSet<Exercice> Exercices { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }
